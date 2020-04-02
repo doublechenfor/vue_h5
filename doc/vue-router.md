@@ -13,7 +13,7 @@ router.beforeEach((to,from,next)=>{
 ```
 #### 6.在模版中添加router-link/this.$router.push({})和router-view,设置路由跳转入口及渲染位置
 #### 7.可以在一个页面中添加多个router-view实现多个组件资源的渲染,需要修改:
-#### + 在路由映射对象routeMap中将component改为components,值为key-value形式,key为组件name,value为组件
+ + 在路由映射对象routeMap中将component改为components,值为key-value形式,key为组件name,value为组件
 ```
     path: '/',
     name: 'slide',
@@ -23,7 +23,7 @@ router.beforeEach((to,from,next)=>{
         login:login,
     }
 ```
-#### + 模版中
+ + 模版中
 ```
 // 其中name为路由映射中components的name值
 <router-view name="home"></router-view>
