@@ -53,6 +53,9 @@ export default {
             height:100%;
             padding:0 1rem;
             border-radius: 0.5rem;
+            &:focus{
+                outline: none;
+            }
         }
     }
     .login-link{
