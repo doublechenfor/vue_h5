@@ -26,26 +26,26 @@
                     </ul>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="2">
-                    <ul class="chat-solity">
-                        <li class="chat-group-li" v-for="item in userLists">
-                                <div @click="handleShowList">
-                                    <svgIcon :iconClass="iscollapse?'chevron-up':'chevron-down'"/>
-                                    <label for="">{{item.group}}</label>
-                                    <label for="">{{item.onlineNum}}/{{item.num}}</label>
-                                </div>
-                                <transition>
-                                    <ul v-show="!iscollapse">
-                                        <li v-for="i in item.list">
-                                            <img :src="i.icon"/>
-                                            <div>
-                                                <label>{{i.alias}}</label>
-                                                <p>{{i.device}}</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </transition>
-                        </li>
-                    </ul>
+                    <div class="chat-solity">
+                        <div class="chat-group-li" v-for="(item,index) in userLists" :key="index">
+                            <div @click="handleShowList(index)">
+                                <svgIcon :iconClass="!item.hide?'chevron-up':'chevron-down'"/>
+                                <label for="">{{item.group}}</label>
+                                <label for="">{{item.onlineNum}}/{{item.num}}</label>
+                            </div>
+                            <transition>
+                                <ul v-show="!item.hide">
+                                    <li v-for="i in item.list">
+                                        <img :src="i.icon"/>
+                                        <div>
+                                            <label>{{i.alias}}</label>
+                                            <p>{{i.device}}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </transition>
+                        </div>
+                    </div>
                     
                 </mt-tab-container-item>
                 <mt-tab-container-item id="3">
@@ -64,7 +64,6 @@ export default {
     data(){
         return{
             selected:'1',
-            iscollapse:false,
             chatLists:[
                 {name:'张三', msg:'明天会不会放假?',icon:require('../assets/images/cat.jpg'),timestamp:'13:40',unreadNum:20},
                 {name:'史密斯', msg:'hello?',icon:require('../assets/images/cat.jpg'),timestamp:'13:40',unreadNum:20},
@@ -76,25 +75,25 @@ export default {
                 {name:'张三', msg:'明天会不会放假?',icon:require('../assets/images/cat.jpg'),timestamp:'13:40',unreadNum:20},
             ],
             userLists:[
-                {group:'我的好友', num:50,onlineNum:20,list:[
+                {group:'我的好友', hide:true,num:50,onlineNum:20,list:[
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'jesse'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'春秋游'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'王五'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'罗大佑'},
                 ]},
-                {group:'我的家人', num:50,onlineNum:20,list:[
+                {group:'我的家人', hide:true, num:50,onlineNum:20,list:[
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'jesse'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'春秋游'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'王五'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'罗大佑'},
                 ]},
-                {group:'我的同学', num:50,onlineNum:20,list:[
+                {group:'我的同学', hide:true, num:50,onlineNum:20,list:[
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'jesse'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'春秋游'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'王五'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'罗大佑'},
                 ]},
-                {group:'我的老朋友', num:50,onlineNum:20,list:[
+                {group:'我的老朋友', hide:true, num:50,onlineNum:20,list:[
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'jesse'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'春秋游'},
                     {icon:require('../assets/images/cat.jpg'),device:'4G在线',alias:'王五'},
@@ -110,8 +109,8 @@ export default {
     methods:{
         loadTop(){},
         handleTopPull(){},
-        handleShowList(){
-            this.iscollapse=!this.iscollapse
+        handleShowList(index){
+            this.userLists[index].hide=!this.userLists[index].hide
         }
     }
 }
