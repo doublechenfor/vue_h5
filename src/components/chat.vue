@@ -1,9 +1,13 @@
 <template>
     <div class="chat-wrapper">
         <mt-navbar v-model="selected">
-        <mt-tab-item id="1">聊天列表</mt-tab-item>
+        <mt-tab-item id="1">聊天列表
+            <mt-badge type="error" size="small">99+</mt-badge>
+        </mt-tab-item>
         <mt-tab-item id="2">联系人列表</mt-tab-item>
-        <mt-tab-item id="3">生态圈</mt-tab-item>
+        <mt-tab-item id="3">生态圈
+            <mt-badge type="error" size="small">2</mt-badge>
+        </mt-tab-item>
         </mt-navbar>
         <mt-loadmore autoFill  ref="loadmore">
             <mt-tab-container v-model="selected">
@@ -18,7 +22,7 @@
                             <div class="chat-list-info">
                                 <p>{{item.timestamp}}</p>
                                 <div>
-                                    <mt-badge size="small">{{item.unreadNum}}</mt-badge>
+                                    <mt-badge type="error" size="small">{{item.unreadNum}}</mt-badge>
                                 </div>
                                 
                             </div>
@@ -52,21 +56,24 @@
                         <ul>
                             <li v-for="(item,index) in socityLists">
                                 <div>
-                                    <h4>{{item.name}}</h4>
+                                    <div class="displayflex socity-person-info">
+                                        <img class="socity-person-img":src="item.picture"/>
+                                        <h4>{{item.name}}</h4>
+                                    </div>  
                                     <p>{{item.text.length>=60?item.text.substring(0,70)+'...':item.text}}</p>
-                                    <img :src="item.src"/>
-                                    <div class="socity-device">
+                                    <img class="socity-text-img" :src="item.src"/>
+                                    <div class="displayflex socity-device">
                                         <svgIcon iconClass="smartphone"/>
                                         <p>{{item.device}}</p>
                                     </div>
                                     
-                                    <div class="show-attitude">
+                                    <div class="displayflex show-attitude">
                                         <svgIcon iconClass="thumb-down"/>
                                         <p>{{item.hate}}</p>                 
                                         <svgIcon iconClass="thumb-up"/>
                                         <p>{{item.like}}</p>
                                     </div>
-                                    <div class="socity-comments" v-for="i in item.comments">
+                                    <div class="displayflex socity-comments" v-for="i in item.comments">
                                         <label>{{i.alias}}:</label>
                                         <p>{{i.comment}}</p>
                                     </div>
@@ -125,28 +132,28 @@ export default {
                 ]},                
             ],
             socityLists:[
-                {name:'罗永浩', hate:5, device:'iphone 11(4G)',text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/cat.jpg'),
+                {name:'罗永浩', hate:5, device:'iphone 11(4G)',picture:require('../assets/images/monv.jpg'),text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/cat.jpg'),
                 like:21, comments:[
                     {alias:'古道流水人家',comment:'罗永浩来嚯嚯直播带货咯~~'},
                     {alias:'飞鸟爱上鱼',comment:'4.1日的tik tok 直播,效果不行,不行!!'},
                 ]},
-                {name:'罗永浩', hate:5, device:'iphone 11(4G)',text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/cat.jpg'),like:21, comments:[
+                {name:'罗永浩', hate:5, device:'iphone 11(4G)',picture:require('../assets/images/monv.jpg'),text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/monv.jpg'),like:21, comments:[
                     {alias:'古道流水人家',comment:'罗永浩来嚯嚯直播带货咯~~'},
                     {alias:'飞鸟爱上鱼',comment:'4.1日的tik tok 直播,效果不行,不行!!'},
                 ]},
-                {name:'罗永浩', hate:5, device:'iphone 11(4G)',text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/cat.jpg'),like:21, comments:[
+                {name:'罗永浩', hate:5, device:'iphone 11(4G)',picture:require('../assets/images/monv.jpg'),text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/tiger.jpg'),like:21, comments:[
                     {alias:'古道流水人家',comment:'罗永浩来嚯嚯直播带货咯~~'},
                     {alias:'飞鸟爱上鱼',comment:'4.1日的tik tok 直播,效果不行,不行!!'},
                 ]},
-                {name:'罗永浩', hate:5, device:'iphone 11(4G)',text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/cat.jpg'),like:21, comments:[
+                {name:'罗永浩', hate:5, device:'iphone 11(4G)',picture:require('../assets/images/monv.jpg'),text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/cat.jpg'),like:21, comments:[
                     {alias:'古道流水人家',comment:'罗永浩来嚯嚯直播带货咯~~'},
                     {alias:'飞鸟爱上鱼',comment:'4.1日的tik tok 直播,效果不行,不行!!'},
                 ]},
-                {name:'罗永浩', hate:5, device:'iphone 11(4G)',text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/cat.jpg'),like:21, comments:[
+                {name:'罗永浩', hate:5, device:'iphone 11(4G)',picture:require('../assets/images/monv.jpg'),text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/monv.jpg'),like:21, comments:[
                     {alias:'古道流水人家',comment:'罗永浩来嚯嚯直播带货咯~~'},
                     {alias:'飞鸟爱上鱼',comment:'4.1日的tik tok 直播,效果不行,不行!!'},
                 ]},
-                {name:'罗永浩', hate:5, device:'iphone 11(4G)',text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/cat.jpg'),like:21, comments:[
+                {name:'罗永浩', hate:5, device:'iphone 11(4G)',picture:require('../assets/images/monv.jpg'),text:'罗永浩带货直播首秀交出的成绩单看起来不错。尽管很多人觉得直播的节奏过慢，且东西并不便宜，但罗永浩用7万多支中性笔几分钟售罄的“带货能力”表明，自己在互联网界仍旧具有举足轻重的影响力。为了请来罗永浩直播，抖音花了6000万。这6000万花得值吗？从罗永浩直播首秀带来的话题关注度看，这钱是花得值。对抖音而言，它需要开拓自己的直播业务和带货业务，增强自己的变现能力。如果从自身已有的中小主播中培养出一个李佳琪、薇娅级别的网红主播，需耗时很长且未必有成效。而请来本身具有巨大流量的罗永浩，能很快打响自身业务的知名度。很多人正是从昨夜罗永浩的直播中，第一次得知抖音还能直播卖货，也是第一次在抖音上买东西。同时，抖音也以此向品牌合作方宣示，自己拥有强大的卖货能力。这也会促成更多商家进驻抖音。',src:require('../assets/images/tiger.jpg'),like:21, comments:[
                     {alias:'古道流水人家',comment:'罗永浩来嚯嚯直播带货咯~~'},
                     {alias:'飞鸟爱上鱼',comment:'4.1日的tik tok 直播,效果不行,不行!!'},
                 ]}
@@ -168,11 +175,10 @@ export default {
 <style lang="scss">
 .chat-wrapper{
     width: 100vw;
-    height: 100vh;
-    background: #F4F4F4;
     .chat-list{
         width: calc(100% - 2rem);
         margin-bottom: 55px;
+        background: #fff;
         padding: 0.5rem 1rem;
         li{
             width: 100%;
@@ -183,7 +189,7 @@ export default {
             align-items: center;
             padding: 1rem 0;
             justify-content: center;
-            border-bottom: 0.1rem solid #E3E3E3;
+            // border-bottom: 0.1rem solid #E3E3E3;
             img{
                 width: 4rem;
                 height:4rem;
@@ -215,7 +221,7 @@ export default {
         width:calc(100% - 2rem);
         margin-bottom: 55px;
         padding: 0.5rem 1rem;
-        background: #F4F4F4;
+        background: #fff;        
         .chat-group-li{
             width: 100%;
             &>:first-child{
@@ -266,7 +272,10 @@ export default {
         width: 100vw;
         padding: 0.5rem 0;
         padding-bottom: 55px;
-        background: #F4F4F4;
+        .displayflex{
+            display: flex;
+            flex: row;
+        }
         ul{
             width: 100%;
             li{ 
@@ -275,12 +284,12 @@ export default {
                 margin-bottom: 1rem;
                 & >:first-child{
                     h4{
-                        padding: 0.5rem;
+                        margin: 0.5rem;
                     }
                     p{
                         line-height: 1.5rem;
                     }
-                    img{
+                    .socity-text-img{
                         min-width: 6rem;
                         width: auto;
                         height: 8rem;
@@ -307,9 +316,16 @@ export default {
                         stroke: #969696;
                     }
                 }
+                .socity-person-info{
+                    align-items: center;
+                    padding: 0.5rem 0;
+                    .socity-person-img{
+                        width: 3rem;
+                        height: 3rem;
+                        border-radius: 50%;
+                    }
+                }
                 .show-attitude{
-                    display: flex;
-                    flex-direction: row;
                     justify-content: flex-end;
                     padding-bottom: 0.5rem;
                     margin-bottom: 0.5rem;
@@ -319,8 +335,6 @@ export default {
                     }
                 }
                 .socity-comments{
-                    display: flex;
-                    flex-direction: row;
                     line-height: 1.5rem;
                     label{
                         color: #26A2FF;
