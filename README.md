@@ -19,3 +19,5 @@ yarn run build
 ```
 yarn run lint
 ```
+
+try[https://doublechenfor.github.io/vue_h5/]
