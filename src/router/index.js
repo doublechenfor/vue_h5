@@ -45,7 +45,7 @@ let routerPath = [
 //   routerPath = routerPath.concat(routerModule.default || routerModule)
 // })
 const router = new VueRouter({
-    mode: 'history',
+    // mode: 'history',
     routes: routerPath,
 })
 
