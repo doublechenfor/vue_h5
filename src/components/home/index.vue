@@ -27,7 +27,7 @@ export default {
     name:'home',
     data(){
         return{
-            selected:'imgbox'
+            selected:''
         }
     },
     watch:{
@@ -39,6 +39,11 @@ export default {
                 })
             }
         }
+    },
+    created(){
+        this.$router.push({
+                    path:`/home/imgbox`
+        })
     },
     components:{
         svgIcon
