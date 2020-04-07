@@ -12,8 +12,8 @@
         <mt-loadmore autoFill  ref="loadmore">
             <mt-tab-container v-model="selected">
                 <mt-tab-container-item id="1">
-                    <ul class="chat-list">
-                        <li v-for="item in chatLists">
+                    <ul class="chat-list" >
+                        <li v-for="(item,index) in chatLists" :data-value="index" @click="readChatInfo(index)">
                             <img :src="item.icon" alt="">
                             <div class="chat-list-body">
                                 <label for="">{{item.name}}</label>
@@ -66,7 +66,6 @@
                                         <svgIcon iconClass="smartphone"/>
                                         <p>{{item.device}}</p>
                                     </div>
-                                    
                                     <div class="displayflex show-attitude">
                                         <svgIcon iconClass="thumb-down"/>
                                         <p>{{item.hate}}</p>                 
@@ -166,6 +165,14 @@ export default {
     methods:{
         loadTop(){},
         handleTopPull(){},
+        readChatInfo(index){
+            this.$router.push({
+                path: '/home/chat/chatpeer',
+                params:{
+                    id:index
+                }
+            })
+        },
         handleShowList(index){
             this.userLists[index].hide=!this.userLists[index].hide
         }

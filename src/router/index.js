@@ -6,7 +6,6 @@ import blog from '../components/blog.vue'
 import imgbox from '../components/imgbox.vue'
 import register from '../components/register.vue'
 import chat from '../components/chat.vue'
-import editblog from '../components/editblog.vue'
 import Vue from 'vue'
 
 Vue.use(VueRouter)

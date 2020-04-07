@@ -8,13 +8,13 @@
             <mt-button type="default" slot="right" @click="handleSendBlog">发送</mt-button>
         </mt-header>
         <div class="editblog-body">
-            <textarea name="" id="" placeholder="分享新鲜事物......"></textarea>
+            <textarea name="" id="" placeholder="分享新鲜事物......">{{$route.params.id}}</textarea>
         </div>
     </div>
 </template>
 <script>
 export default {
-    name:'editblog',
+    name:'chatpeer',
     methods:{
         handleClose(){
             this.$router.push({

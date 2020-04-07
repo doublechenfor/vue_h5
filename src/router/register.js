@@ -14,4 +14,9 @@ export default [
         name:'editblog',
         component:()=>import('../components/editblog.vue')
     },
+    {
+        path: '/home/chat/chatpeer',
+        name:'chatpeer',
+        component:()=>import('../components/chatpeer.vue')
+    },
 ]
