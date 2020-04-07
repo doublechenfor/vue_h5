@@ -27,7 +27,7 @@ export default {
     name:'home',
     data(){
         return{
-            selected:'chat'
+            selected:'imgbox'
         }
     },
     watch:{

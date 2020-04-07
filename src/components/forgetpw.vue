@@ -1,21 +1,22 @@
 <template>
     <div class="regiter-wrapper">
-        <mt-header title="注册">
+        <mt-header title="账号找回">
         <router-link to="/" slot="left">
             <mt-button icon="back"></mt-button>
             <mt-button @click="handleClose">返回</mt-button>
         </router-link>
         <!-- <mt-button icon="more" slot="right"></mt-button> -->
         </mt-header>
-        forget password~
-        <!-- <div>
-            <h2>用手机号码注册</h2>
-            <p>注册即代表阅读并同意<a href="">服务协议</a>和<a href="">又又隐私指引</a></p>
+        <div>
+            <h2>输入手机号码</h2>
             <div>
-                <span>+</span>
+                <span>+86</span>
                 <input type="text" />
             </div>                    
-        </div> -->
+        </div>
+        <div class="register-submit">
+            <mt-button type="default" @click.native="handleAuth">确定</mt-button>
+        </div>
     </div>
 </template>
 <script>
@@ -41,23 +42,28 @@ export default {
     p{
         font-size: 1rem;
     }
-    // div{
-    //     div{
-    //         height: 3rem;
-    //         line-height: 3rem;
-    //         border-bottom:1px solid #969696;
-    //         color:#969696;
-    //         span{
-    //             font-size: 2rem;
-    //         }
-    //         input{
-    //             background: transparent;
-    //             padding-left: 1rem;
-    //             &:focus{
-    //                 outline: none;
-    //             }
-    //         }
-    //     }       
-    // }
+    div{
+        div{
+            height: 3rem;
+            line-height: 3rem;
+            border-bottom:1px solid #969696;
+            color:#969696;
+            span{
+                font-size: 2rem;
+            }
+            input{
+                background: transparent;
+                padding-left: 1rem;
+                &:focus{
+                    outline: none;
+                }
+            }
+        }       
+    }
+    .register-submit{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 1rem;
+    } 
 }
 </style>
