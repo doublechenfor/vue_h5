@@ -12,9 +12,11 @@
                 </li>
             </ul>
         </mt-loadmore>
-        <mt-palette-button class="blog-edit" content="+" mainButtonStyle="color:#fff;background-color:#26a2ff;">
-            <div class="my-icon-button"></div>
-        </mt-palette-button>
+        <div>
+            <mt-palette-button class="blog-edit" content="+" mainButtonStyle="color:#fff;background-color:#26a2ff;" @expand="handlePublishBlog">
+                <div class="my-icon-button"></div>
+            </mt-palette-button>
+        </div> 
     </div>
 </template>
 <script>
@@ -40,6 +42,11 @@ export default {
     methods:{
         handleTopPull(){},
         loadTop(){},
+        handlePublishBlog(){
+            this.$router.push({
+                name:'editblog'
+            })
+        }
     },
 }
 </script>

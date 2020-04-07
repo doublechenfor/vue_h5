@@ -6,6 +6,7 @@ import blog from '../components/blog.vue'
 import imgbox from '../components/imgbox.vue'
 import register from '../components/register.vue'
 import chat from '../components/chat.vue'
+import editblog from '../components/editblog.vue'
 import Vue from 'vue'
 
 Vue.use(VueRouter)
@@ -32,7 +33,7 @@ let routerPath = [
         children: [
             {path: '', component:home},
             {path: 'my', component: my},
-            {path: 'blog', component: blog},
+            {path: 'blog',component: blog},
             {path: 'chat', component: chat},
             {path: 'imgbox', component: imgbox}
           ]

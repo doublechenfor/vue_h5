@@ -9,4 +9,9 @@ export default [
         name:'phoneverify',
         component:()=>import('../components/phoneverify.vue')
     },
+    {
+        path: '/home/blog/editblog',
+        name:'editblog',
+        component:()=>import('../components/editblog.vue')
+    },
 ]
