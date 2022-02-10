@@ -22,7 +22,7 @@
     "cs-com-csicons-svg": "^0.0.5",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "scss": "^0.2.4",
     "scss-loader": "^0.0.1",
     "vue-template-compiler": "^2.6.10"
